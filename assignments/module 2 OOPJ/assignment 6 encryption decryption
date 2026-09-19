@@ -1,0 +1,110 @@
+package major2;
+import java.io.IOException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import program.consoleinput;
+
+public class entry {
+	static int key=5;
+	public static void encrypt(String path) {
+		
+		try {
+			FileInputStream rd=new FileInputStream(path);
+			FileOutputStream od=new FileOutputStream("Encrypted.txt");
+			int data;
+			while((data=rd.read())!=-1) {
+				int e=data+key;
+				od.write(e);
+				
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void decrypt() {
+		try {
+			System.out.println("Enter encrypted file path...");
+			String path=consoleinput.getstring();
+			FileInputStream fis=new FileInputStream(path);
+			
+			FileOutputStream fout=new FileOutputStream("Decrypted.txt");
+			
+			int temp;
+			while((temp=fis.read())!=-1) {
+				int d=temp-key;
+				fout.write(d);
+			}
+			fis.close();
+			fout.close();
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		System.out.println("File decrypted successfully.");
+		
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+int choice;
+		do {
+			System.out.println("1.encrypt the file.");
+			System.out.println("2.decrypt the file");
+			System.out.println("enter the choice...");
+			choice = consoleinput.getint();
+			switch (choice) {
+			case 1: {
+
+				System.out.println("Enter file path...");
+				String path = consoleinput.getstring();
+				encrypt(path);
+				System.out.println("file successfully incrypted...");
+
+
+			}
+				break;
+
+			case 2: {
+				decrypt();
+
+			}
+
+
+
+				break;
+
+			default:
+				System.out.println("enter valid choice...");
+
+			}
+		} while (choice!=3);
+		
+		
+		
+		
+	}
+
+}
+
+
+//   C:\Users\chaitanya pingale\Desktop\cdac java\major2\src\major2\sample.txt
+//    C:\Users\chaitanya pingale\Desktop\cdac java\major2\Encrypted.txt
