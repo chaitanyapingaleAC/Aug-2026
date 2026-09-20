@@ -1,0 +1,120 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.TreeSet;
+
+public class arraylist {
+//	
+//	7. Modify the above Java program to sort a given array list. (Hint : Use the class Collections)
+//	8. Modify the above Java program to copy one array list into another. (Hint : Use the class Collections)
+//	9. Modify the above Java program to shuffle elements in a array list. (Hint : Use the class Collections)
+//	10. Modify the above Java program to reverse elements in a array list. (Hint : Use the class Collections)
+//	11. Write a Java program to create a new tree set, add some colors (string) and print out the tree set. 
+//	12. Modify the above Java program to add all the elements of a specified tree set to another tree set.  
+//	13. Modify the above Java program to create a reverse order view of the elements contained in a given tree set.
+//	14. Modify the above Java program to get the first and last elements in a tree set.  
+//	15. Write a Java program to get the element in a tree set which is greater than or equal to the given element. (Hint : Use the ceiling method of the TreeSet)
+
+	
+	public static void arraylistsort() {
+		ArrayList<String> arrayobj=new ArrayList<>();
+		arrayobj.add("red");
+		arrayobj.add("yellow");
+		arrayobj.add("voilet");
+		arrayobj.add("blue");
+		System.out.println("before sorting : "+arrayobj);
+		Collections.sort(arrayobj);
+		
+		System.out.println("after sorting : "+arrayobj);
+		
+		System.out.println("**********************");
+		ArrayList<String> copyobj=new ArrayList<>();
+		copyobj.add(" ");
+		copyobj.add(" ");
+		copyobj.add(" ");
+		copyobj.add(" ");
+		
+		Collections.copy(copyobj, arrayobj);
+		
+		System.out.println("copy arraylist : "+copyobj);
+		System.out.println("**********************");
+
+		System.out.println("before shuffling : "+arrayobj);
+		Collections.shuffle(arrayobj);
+		System.out.println("after shuflig "+arrayobj);
+		System.out.println("**********************");
+
+		System.out.println("before reverse : "+arrayobj);
+		Collections.reverse(arrayobj);
+		System.out.println("after reverse : "+arrayobj);
+		System.out.println("**********************");
+
+
+		
+		
+	}
+	public static void treeset() {
+		TreeSet<String> tobj=new TreeSet<>();
+		tobj.add("red");
+		tobj.add("yellow");
+		tobj.add("orange");
+		System.out.println("");
+		
+		Iterator list=tobj.iterator();
+		while(list.hasNext()) {
+			String d=(String)list.next();
+			System.out.println(d);
+		}
+		System.out.println("**********************");
+
+		System.out.println("set1 "+tobj);
+		TreeSet<String> t1obj=new TreeSet<>();
+		t1obj.add("black");
+		t1obj.add("white");
+		System.out.println("set2 "+t1obj);
+		t1obj.addAll(tobj);
+		System.out.println("set2 after adding "+t1obj);
+		System.out.println("**********************");
+
+		
+		System.out.println("original "+tobj);
+		TreeSet<String> rev=(TreeSet<String>) tobj.descendingSet();
+		System.out.println("reversed "+rev);
+		
+
+		System.out.println("**********************");
+
+		System.out.println("first element : "+tobj.first());
+		System.out.println("last element : "+tobj.last());
+		System.out.println("**********************");
+
+		
+		
+		
+	}
+	
+	public static void celing() {
+		TreeSet<Integer> obj=new TreeSet<>();
+		obj.add(22);
+		obj.add(42);
+		obj.add(82);
+		obj.add(2);
+	
+		System.out.println("tree set : "+obj);
+		int val=40;
+		System.out.println("element grater than or equal to "+val+" : "+obj.ceiling(val));
+	}
+	
+	
+	
+	
+	public static void main(String[] args) {
+		
+		arraylistsort();
+		treeset();
+		celing();
+	
+
+	}
+
+}
