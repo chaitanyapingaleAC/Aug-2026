@@ -1,0 +1,22 @@
+package functional;
+
+import java.util.function.BiFunction;
+
+public class twostring {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String a="hello";
+		String b="java";
+		BiFunction<String,String,String> obj=(x,y)->{
+			return x+y;
+		};
+		String s=obj.apply(a, b);
+		System.out.println(s);
+		
+		
+		
+	}
+
+}
