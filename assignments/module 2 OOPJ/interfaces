@@ -1,0 +1,87 @@
+interface regularpolygon{
+	int getnumsides();
+	int getsidelength();
+	
+	static int totalSides(regularpolygon[] rrr) {
+		int total = 0;
+		for(regularpolygon i : rrr) {
+			total = total + i.getnumsides();
+		}
+		return total;
+	}
+	
+	default int getperimeter() {
+		return (getnumsides()*getsidelength());
+		
+	}
+	default  double getInteriorAngle() {
+		return (getnumsides()-2)*3.14/getnumsides(); 
+		
+	}
+	
+}
+
+
+
+
+
+class equilateraltraingle implements regularpolygon{
+	int sidelength;
+	equilateraltraingle(int sidelength){
+		this.sidelength=sidelength;
+		
+	}
+	
+	
+	
+	@Override
+	public int getnumsides(){
+		return 3;
+		
+	}
+	@Override
+	public int getsidelength() {
+		return sidelength;
+	}
+	
+}
+
+class square implements regularpolygon {
+	
+	int sidelength;
+	square(int sidelength){
+		this.sidelength=sidelength;
+	}
+	@Override
+	public int getnumsides(){
+		return 3;
+		
+	}
+	@Override
+	public int getsidelength() {
+		
+		return sidelength;
+	}
+}
+public class interfaceassinment {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		regularpolygon r1=new equilateraltraingle(3);
+		System.out.println("Number Of Sides  :"+r1. getnumsides ());
+		System.out.println("Size Length   :"+r1.getsidelength());
+		System.out.println("Perimeter of Equilatertrianle:"+r1.getperimeter());
+		System.out.println("Interior Angle of Equilatertrianle:"+r1. getInteriorAngle());
+		
+		System.out.println("****************************************************");
+		regularpolygon r2=new square(4);
+		System.out.println("Number Of Sides  :"+r2. getnumsides ());
+		System.out.println("Size Length   :"+r2.getsidelength());
+		System.out.println("Perimeter of Equilatertrianle:"+r2.getperimeter());
+		System.out.println("Interior Angle of Equilatertrianle:"+r2. getInteriorAngle());
+
+		
+	}
+
+}
