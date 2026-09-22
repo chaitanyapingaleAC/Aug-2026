@@ -1,0 +1,16 @@
+package functional;
+
+import java.time.LocalDate;
+import java.util.function.Supplier;
+
+public class date {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Supplier<LocalDate> obj=()-> LocalDate.now();
+		System.out.println(" date is : "+obj.get());
+		
+	}
+
+}
