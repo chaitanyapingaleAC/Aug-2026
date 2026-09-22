@@ -1,0 +1,166 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.function.Function;
+import java.util.function.Predicate;
+
+import java.time.LocalDate;
+
+import functional.transaction;
+
+
+public class maintrasaction {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		
+		ArrayList<transaction> obj=new ArrayList<>();
+		
+		
+//		int  txId;
+//		LocalDate txDate; 
+//	    float txAmount ;
+//		boolean txStatus; 
+//		boolean txArrears ;
+		for(int itemp=0;itemp<5;itemp++) {
+			
+        System.out.println("\nEnter Transaction " + (itemp + 1));
+		System.out.println("enter transaction id ");
+		int id=sc.nextInt();
+		System.out.println("enter the date(yyyy-mm-dd)");
+		LocalDate date=LocalDate.parse(sc.next());
+		System.out.println("enter amount ");
+		float amount=sc.nextFloat();
+		System.out.println("enter status(true/false)");
+		boolean status=sc.nextBoolean();
+		System.out.println("arrers(true/false)");
+		boolean arr=sc.nextBoolean();
+		
+		transaction tobj=new transaction(id,date,amount,status,arr);
+		obj.add(tobj);
+		
+		
+		}
+		
+		//Create the Lambda expressions for
+		//1. Getting all the Transactions from the Collection where the txAmount is > 5000
+		//
+		//2. Getting all the Transactions where the txStatus is false
+		//
+		//3. Write a Lambda Function to generate the amount due. The amount due is calculated as the txAmount + Rs. 500/- + 18% of txAmount
+		//if the txArrears is true else if txArrears if false then only the txAmount will be returned
+		//
+
+		
+		System.out.println("**************************************************");
+		
+		Predicate<transaction> greateramount=t->
+			t.getTxAmount()>5000;
+		
+			
+		System.out.println("amount graater than 5000");
+		
+		obj.stream()
+		.filter(greateramount)
+		.forEach(System.out::println);
+		
+		System.out.println("**************************************************");
+
+		System.out.println("Transactions where the txStatus is false");
+		
+		Predicate<transaction> status=t->{
+			return t.isTxStatus()==false;
+		};
+		obj.stream()
+		.filter(status)
+		.forEach(System.out::println);
+		
+		System.out.println("**************************************************");
+
+		System.out.println("amount due");
+		Function<transaction,Double> taxobj=t->{
+			if(t.isTxArrears()) {
+				return (t.getTxAmount()+500+(1.8*t.getTxAmount()));
+			}
+			else
+				return (double)t.getTxAmount();
+		};
+		
+		obj.forEach(
+				t->System.out.println("transaction id "+t.getTxId()+" amount due "+taxobj.apply(t))
+				
+				);
+		
+
+	}
+
+}
+
+
+
+
+ class transaction {
+
+	int  txId;
+	LocalDate txDate; 
+    float txAmount ;
+	boolean txStatus; 
+	boolean txArrears ;
+	
+	
+	public transaction(int txId,LocalDate txDate,float txAmount,boolean txStatus,boolean txArrears) {
+		
+		super();
+		
+		this.txId=txId;
+		this.txDate=txDate;
+		this.txAmount=txAmount;
+		this.txStatus=txStatus;
+		this.txArrears=txArrears;
+		
+		
+		
+	}
+
+
+	public int getTxId() {
+		return txId;
+	}
+
+
+	public LocalDate getTxDate() {
+		return txDate;
+	}
+
+
+	public float getTxAmount() {
+		return txAmount;
+	}
+
+
+	public boolean isTxStatus() {
+		return txStatus;
+	}
+
+
+	public boolean isTxArrears() {
+		return txArrears;
+	}
+
+
+	@Override
+	public String toString() {
+		return "transaction [txId=" + txId + ", txDate=" + txDate + ", txAmount=" + txAmount + ", txStatus=" + txStatus
+				+ ", txArrears=" + txArrears + "]";
+	}
+
+
+	
+	
+	
+	
+	
+
+}
+
