@@ -1,0 +1,26 @@
+
+package functional;
+
+import java.util.function.Consumer;
+
+public class smallestnum {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int []arr= {2,1,4,5,6,3,8,2,3,1};
+		
+		Consumer<int []> cobj=a->{
+			int min=a[0];
+			for(int itemp=0;itemp<a.length;itemp++) {
+				if(a[itemp]<min) {
+					min=a[itemp];
+				}
+			}
+			System.out.println("smallest no is : "+min);
+		};
+		
+		cobj.accept(arr);
+
+	}
+
+}
