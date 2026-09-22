@@ -26,6 +26,13 @@ for(String d:arr) {
 		{
 			
 		}
+// using cunsumer......
+
+Consumer<String []> obj1=a->{
+			Arrays.sort(a);
+		};
+		obj1.accept(arr);
+		System.out.println(Arrays.toString(arr));
 
 	}
 
