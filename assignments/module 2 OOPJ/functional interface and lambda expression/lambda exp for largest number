@@ -1,0 +1,40 @@
+package functional;
+
+import program.consoleinput;
+
+@FunctionalInterface
+interface Largest{
+	int large(int []arr);
+}
+
+public class largestnumberlamda {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		int []arr=new int[5];
+		
+		Largest objlargest=(a)->{
+			System.out.println("enter the elements in array upto 5");
+			for(int itemp=0;itemp<a.length;itemp++) {
+				a[itemp]=consoleinput.getint();
+			}
+			int max=0;
+			for(int itemp=0;itemp<a.length;itemp++) {
+				if(a[itemp]>max)
+					max=a[itemp];
+				
+			}
+			return max;
+		};
+		
+		System.out.println("largest element is : "+objlargest.large(arr));
+		
+		
+		
+		
+		
+	}
+
+}
