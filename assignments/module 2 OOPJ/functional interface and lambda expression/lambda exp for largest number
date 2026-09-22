@@ -30,7 +30,25 @@ public class largestnumberlamda {
 		};
 		
 		System.out.println("largest element is : "+objlargest.large(arr));
+
+
+
+		int []arr= {2,5,4,8,1,5};
 		
+		
+		//using function
+		
+		Function<int[],Integer> fobj=(int []s)->{
+			
+			int max=0;
+			for(int itemp=0;itemp<s.length;itemp++) {
+				if(s[itemp]>max)
+					max=s[itemp];
+			}
+			return max;
+		};
+		int a=fobj.apply(arr);
+		System.out.println(a);
 		
 		
 		
