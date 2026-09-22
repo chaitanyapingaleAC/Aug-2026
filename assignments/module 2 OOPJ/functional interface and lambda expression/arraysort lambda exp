@@ -19,6 +19,9 @@ public class sortstring {
 		                              };
 		
 		obj.sort(arr);
+for(String d:arr) {
+			System.out.println(d);
+		}
 	System.out.println(Arrays.toString(arr));
 		{
 			
