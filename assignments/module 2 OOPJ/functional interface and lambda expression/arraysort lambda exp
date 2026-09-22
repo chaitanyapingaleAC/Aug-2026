@@ -1,0 +1,29 @@
+package functional;
+
+import java.util.Arrays;
+
+
+
+@FunctionalInterface
+interface ArraySort{
+	void sort(String []arr);
+}
+public class sortstring {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String []arr= {"banana","apple","cheery","mango","orange"};
+		ArraySort obj=(String []a)->{
+			                         Arrays.sort(a);
+		                              };
+		
+		obj.sort(arr);
+	System.out.println(Arrays.toString(arr));
+		{
+			
+		}
+
+	}
+
+}
