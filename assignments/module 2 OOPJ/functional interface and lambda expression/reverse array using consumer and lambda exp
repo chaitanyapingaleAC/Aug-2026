@@ -1,0 +1,31 @@
+package functional;
+
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+public class reversearray {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int []arr= {2,5,1,5,6,3,4};
+		
+		Consumer<int[]> obj=(int []a)->{
+			int jtemp=a.length-1;
+			for(int itemp=0;itemp<a.length/2;itemp++) {
+				int temp=a[itemp];
+				a[itemp]=a[jtemp];
+				a[jtemp]=temp;
+				jtemp--;
+			}
+			for(int b:a) {
+				System.out.print(b+" ");
+			}
+		};
+		
+		obj.accept(arr);
+		
+		
+	}
+
+}
