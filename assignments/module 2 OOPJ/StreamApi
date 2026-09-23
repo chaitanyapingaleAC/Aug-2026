@@ -1,0 +1,97 @@
+import java.security.cert.CollectionCertStoreParameters;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+public class streampractice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		ArrayList<String> arraylist=new ArrayList<>();
+		arraylist.add("chaitanya");
+		arraylist.add("dipak");
+		arraylist.add("sarthak");
+		arraylist.add("athu");
+		arraylist.add("atharv");
+		arraylist.add("ss");
+		arraylist.add("atharv");
+		arraylist.add("chaitu");
+		arraylist.add("teju");
+		arraylist.add("samu");
+		arraylist.add("bhagat");
+		arraylist.add("athu");
+		
+		
+		
+		System.out.println("tolist ,filter and map");
+
+		arraylist.stream()
+		.filter(a->a.length()>5)
+		.map(s->s.toUpperCase())                ///fiter length greater than 5 and then map to uppercase
+		.sorted()
+		.collect(Collectors.toList())                         
+		
+		.forEach(System.out::println);
+		
+		System.out.println("***********************************");
+		System.out.println("toset , filter, map");
+		arraylist.stream()
+		.filter(a->a.length()>5)
+		.map(s->s.toUpperCase())                ///fiter length greater than 5 and then map to uppercase
+		.sorted()
+		.collect(Collectors.toSet())
+		.forEach(System.out::println);
+		
+		System.out.println("***********************************");
+
+		System.out.println("unique");
+
+		arraylist.stream()
+		.distinct()                            // only unique element
+		.forEach(System.out::println);
+		
+	
+		
+		System.out.println("***********************************");
+		System.out.println("use map to groupby length");
+
+		
+		Map<Integer,List<String>> mapobj=arraylist.stream()
+				.collect(Collectors.groupingBy(s->s.length()));           // use map for group by length ans string
+				
+						
+		mapobj.forEach((length,string)->
+		System.out.println(length +" = "+string)
+				);
+		
+		
+		System.out.println("***********************************");
+		System.out.println("use map to groupby unique length");
+
+
+		Map<Integer,List<String>> oo=arraylist.stream()
+				.distinct()
+				.collect(Collectors.groupingBy(s->s.length()));         //group distinct
+		
+		oo.forEach((l,s)->System.out.println(l+" = "+s));
+		
+		
+		System.out.println("***********************************");
+
+		System.out.println("use map to partioned length> 5 ");
+
+		Map<Boolean,List<String>> ooo=arraylist.stream()
+				.collect(Collectors.partitioningBy(s-> (s.length()>5)));
+		ooo.forEach((l,s)->System.out.println(s));
+		
+		
+		
+		
+		
+		
+
+	}
+
+}
