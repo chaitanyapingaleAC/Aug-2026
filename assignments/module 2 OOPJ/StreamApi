@@ -83,7 +83,7 @@ public class streampractice {
 		System.out.println("use map to partioned length> 5 ");
 
 		Map<Boolean,List<String>> ooo=arraylist.stream()
-				.collect(Collectors.partitioningBy(s-> (s.length()>5)));
+				.collect(Collectors.partitioningBy(s-> (s.length()>5)));          // partitioned two group true/false
 		ooo.forEach((l,s)->System.out.println(s));
 		
 		
